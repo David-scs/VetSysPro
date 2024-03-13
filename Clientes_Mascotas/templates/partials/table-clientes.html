@@ -1,0 +1,40 @@
+<div class="table">
+    <section class="table__header">
+        <div class="input_group">
+            <input type="search" placeholder="Buscar">
+        </div>
+    </section>
+    <section class="table__body">
+        <table>
+            <thead>
+                <tr>
+                    <th> Documento </th>
+                    <th> Nombres </th>
+                    <th> Apellidos </th>
+                    <th> Direccion </th>
+                    <th> Email </th>
+                    <th> Celular </th>
+                    <th> Acciones </th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for propietario in propietarios %}
+                <tr>
+                    <td>{{ propietario.documento }}</td>
+                    <td>{{ propietario.nombres }}</td>
+                    <td>{{ propietario.apellidos }}</td>
+                    <td>{{ propietario.direccion }}</td>
+                    <td>{{ propietario.email }}</td>
+                    <td>{{ propietario.telefono }}</td>
+                    <td>
+                        <a href="/Perfil_propietario/{{ propietario.documento }}/">
+                            <button class="div__btn listar">Ver perfil</button>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+</div>  

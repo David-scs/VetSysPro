@@ -1,0 +1,38 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+
+{% block title %}consultorio{% endblock title %}
+
+{% comment "" %} -------------- styles -------------------{% endcomment %}
+{% block styles %}
+<link rel="stylesheet" href="{%  static 'styles/sidebar.css' %}">
+<link rel="stylesheet" href="{%  static 'styles/consultorio.css' %}">
+{% endblock styles %}
+
+{% comment "" %} -------------- content -------------------{% endcomment %}
+{% block content %}
+    {% comment "" %} -------------- sidebar principal -------------------{% endcomment %}
+    {% include "layouts/partials/sidebar.html" %}
+    <main class="main">
+        <div class="container">
+            {% comment "" %} -------------- escabezado -------------------{% endcomment %}
+            <div class="div__head">
+                <h1>Consultorio</h1>
+                <button class="div__btn" id="open-button">Registrar propietario</button>
+            </div>
+
+            {% comment "" %} -------------- formulario -------------------{% endcomment %}
+            {% include "partials/Form-cliente.html" %}
+
+            {% comment "" %} -------------- table -------------------{% endcomment %}
+            {% include "partials/table-clientes.html" %}
+
+        </div>
+    </main>
+{% endblock %}
+
+{% comment "" %} -------------- script -------------------{% endcomment %}
+{% block scripts %}
+    <script src="{% static 'js/sidebar.js' %}"></script>
+    <script src="{% static 'js/consultorio.js' %}"></script>
+{% endblock scripts %}

@@ -1,0 +1,65 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+
+{% block title %}Historial Clinico{% endblock %}
+
+{% comment "" %} -------------- styles -------------------{% endcomment %}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'styles/sidebar.css' %}">
+<link rel="stylesheet" href="{% static 'styles/sidebar_Mascota.css' %}">
+<link rel="stylesheet" href="{% static 'styles/galeria.css' %}">
+{% endblock styles %}
+
+{% comment "" %} -------------- content -------------------{% endcomment %}
+{% block content %}
+    {% comment "" %} -------------- sidebar principal -------------------{% endcomment %}
+    {% include "layouts/partials/sidebar.html" %}
+
+    <main class="main">
+        <div class="container">
+
+            {% comment "" %} -------------- sidebar mascota -------------------{% endcomment %}
+            {% include "layouts/partials/sidebar__mascota.html" %}
+
+            {% comment "" %} -------------- Contenedor padre de la galeria -------------------{% endcomment %}
+            <div class="container__principal">
+                <div class="div__head">
+                    <h1>Imagenes diagnosticas</h1>
+                    <button class="div__btn" id="file-upload-button">Adjuntar</button>
+                    <input type="file" id="file-input" style="display:none;">
+                </div>
+
+                <div class="ful-img" id="fulImgBox">
+                    <img src="{% static 'assets/img1.jfif' %}" id="fulIimg" alt="img_galeria">
+                    <span onclick="closeImg()">x</span>
+                </div>
+
+                {% comment "" %} -------------- Imagenes de la galeria -------------------{% endcomment %}
+                <div class="img__galeria">                   
+                    <img src="{%  static 'assets/img1.jfif' %}" onclick="openImg(this.src)" alt="img_galeria">
+                    <img src="{%  static 'assets/img2.jfif' %}" onclick="openImg(this.src)" alt="img_galeria">
+                    <img src="{%  static 'assets/img3.jfif' %}" onclick="openImg(this.src)" alt="img_galeria">
+                    <img src="{%  static 'assets/img4.jfif' %}" onclick="openImg(this.src)" alt="img_galeria">
+                    <img src="{%  static 'assets/img5.jfif' %}" onclick="openImg(this.src)" alt="img_galeria">
+                    <img src="{%  static 'assets/img6.jfif' %}" onclick="openImg(this.src)" alt="img_galeria">
+                    <img src="{%  static 'assets/img7.jfif' %}" onclick="openImg(this.src)" alt="img_galeria">
+                    <img src="{%  static 'assets/img8.jfif' %}" onclick="openImg(this.src)" alt="img_galeria">
+                    <img src="{%  static 'assets/img8.jfif' %}" onclick="openImg(this.src)" alt="img_galeria">
+                    <img src="{%  static 'assets/img8.jfif' %}" onclick="openImg(this.src)" alt="img_galeria">
+                    <img src="{%  static 'assets/img8.jfif' %}" onclick="openImg(this.src)" alt="img_galeria">
+                    <img src="{%  static 'assets/img8.jfif' %}" onclick="openImg(this.src)" alt="img_galeria">
+                    <img src="{%  static 'assets/img8.jfif' %}" onclick="openImg(this.src)" alt="img_galeria">
+                    <img src="{%  static 'assets/img8.jfif' %}" onclick="openImg(this.src)" alt="img_galeria">
+                    <img src="{%  static 'assets/img8.jfif' %}" onclick="openImg(this.src)" alt="img_galeria">
+                </div>
+
+            </div>
+        </div>
+    </main>
+{% endblock %}
+
+{% comment "" %} -------------- script -------------------{% endcomment %}
+{% block scripts %}
+<script src="{% static 'js/galeria.js' %}"></script>
+<script src="{% static 'js/sidebar_Mascota.js' %}"></script>
+{% endblock scripts %}

@@ -1,0 +1,40 @@
+<div class="table">
+    <div class="cont__btn-registro">
+        <button class="div__btn-formulario registro" id="open-button">Registrar mascota</button>
+    </div>
+    <section class="table__header">
+        <h4 class="titulo mascotas">Mascotas asociadas</h4>
+        <div class="input_group">
+            <input type="search" placeholder="Buscar">
+        </div>
+    </section>
+    <section class="table__body">
+        <table>
+            <thead>
+                <tr>
+                    <th> Nombre </th>
+                    <th> Especie </th>
+                    <th> Raza </th>
+                    <th> Sexo </th>
+                    <th> Acciones </th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for mascota in mascotas %}
+                    <tr>
+                        <td>{{ mascota.nombre }}</td>
+                        <td>{{ mascota.especie }}</td>
+                        <td>{{ mascota.raza }}</td>
+                        <td>{{ mascota.sexo }}</td>
+                        <td>
+                            <a id="div__btn" href="/vista__mascota/{{ mascota.idMascota }}/">
+                                Ver perfil
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+</div>

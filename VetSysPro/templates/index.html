@@ -1,0 +1,154 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+
+{% block title %} 
+Software veterinario VetSysPro
+{% endblock title%}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'styles/index.css' %}">
+{% endblock styles %}
+
+{% block content %}
+<header class="header">
+    <div class="div__logo">
+        <img src="{%  static 'assets/logo.svg' %}" alt="logo">
+    </div>
+
+    <div class="div__opcions">
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="modulos.html">Modulos</a></li>
+            <li><button>Contactanos</button></li>
+        </ul>
+    </div>
+</header>
+
+{% comment "" %} -------------- contenedor principal -------------------{% endcomment %}
+<div class="container__header">
+    <div class="container__titulos">
+        <div class="div__title">
+            <h1 class="title">
+                VetSysPro, la gestión integral de tu clínica veterinaria en un solo sistema.
+            </h1>
+        </div>
+
+        <div class="div__subTitle">
+            <p class="subTitle">
+                Tu solución para optimizar la gestión de propietarios, mascotas, historiales médicos y citas en clínicas veterinarias.
+            </p>
+        </div>
+
+        <a href="{% url "login" %}">Iniciar sesion</a>
+    </div>
+
+    <div class="container__logo">
+        <img src="{%  static 'assets/Logo2.svg' %}" alt="Logo2">
+    </div>
+</div>
+
+<main class="main__index">
+    <div class="img__objetivo">
+        <img src="{%  static 'assets/img__objetivo.svg' %}" alt="img__objetivo">
+    </div>
+
+    <div class="p__objetivo">
+        <h3>Nuestro Obejtivo</h3>
+        <p>
+            Desarrollar un sistema de software integral para clínicas veterinarias que optimice la gestión operativa y mejore la calidad de la atención, a través de la implementación de módulos diseñados para abordar las problemáticas más frecuentes en el ámbito veterinario.
+        </p>
+    </div>
+
+    <div class="img__mision">
+        <img src="{%  static 'assets/img__mision.svg' %}" alt="img__mision">
+    </div>
+
+    <div class="p__mision">
+        <div class="container__mision">
+            <h3>Nuestra misión</h3>
+            <p>
+                Desarrollar un software integral que mejore la eficiencia operativa, garantice la seguridad de los datos y optimice la organización de procesos dentro de las clínicas veterinarias, ofreciendo una experiencia excepcional tanto para el personal como para los clientes.
+            </p>
+        </div>
+        
+    </div>
+
+    <div class="img__vision">
+        <img src="{%  static 'assets/img__vision.svg' %}" alt="img__vision">
+    </div>
+
+    <div class="p__vision">
+        <h3>Nuestra visión</h3>
+        <p>
+            Ser una solución tecnológica de gran impacto para clínicas veterinarias, destacándonos como la referencia en la mejora continua de la eficiencia, seguridad y organización de procesos, mientras priorizamos una experiencia del usuario excepcional.
+        </p>
+    </div>
+</main>
+
+<div class="accordion__preguntas">
+    <h2 style="text-align: center;">Preguntas frecuentes</h2>
+    <br>
+    <details class="accordion-item">
+        <summary class="accordion-header">¿Cuáles son las principales características de VetSysPro?</summary>
+        <div class="accordion-content">
+            <ul>
+                <li>Gestión eficiente de registros electrónicos de pacientes y clientes.</li>
+                <li>Sistema integral para la programación y gestión de citas.</li>
+                <li>Seguridad robusta y autenticación de usuarios con roles definidos.</li>
+                <li>Generación de informes y estadísticas para análisis y toma de decisiones.</li>
+                <li>Priorización de atributos de calidad como rendimiento, usabilidad, seguridad y disponibilidad.</li>
+                <li>Misión de mejorar la eficiencia operativa y garantizar la seguridad de los datos en clínicas veterinarias.</li>
+                <li>Visión de ser una solución tecnológica de referencia que prioriza la mejora continua y la experiencia del usuario.</li>
+            </ul>
+        </div>
+    </details>
+
+    <details class="accordion-item">
+        <summary class="accordion-header">¿Cómo se implementan los módulos en VetSysPro?</summary>
+        <div class="accordion-content">
+            <p>
+                La implementación de módulos en VetSysPro sigue un proceso riguroso que comienza con el análisis de requisitos y el diseño del sistema, seguido del desarrollo, pruebas de unidad e integración de los módulos. Posteriormente, se realizan pruebas exhaustivas del sistema y se procede a la implementación en las clínicas veterinarias. El mantenimiento continuo y las actualizaciones aseguran la calidad y funcionalidad a lo largo del tiempo. Este enfoque garantiza que VetSysPro sea confiable, seguro y eficiente en su uso.
+            </p>
+        </div>
+    </details>
+
+    <details class="accordion-item">
+        <summary class="accordion-header">¿Cómo puedo obtener VetSysPro para mi clínica veterinaria?</summary>
+        <div class="accordion-content">
+            <p>
+                ¡Contáctanos hoy mismo para recibir una asesoría personalizada! Estaremos encantados de proporcionarte información detallada sobre nuestro sistema y los beneficios específicos que puede ofrecer a tu práctica veterinaria.
+            </p>
+        </div>
+    </details>
+
+    <details class="accordion-item">
+        <summary class="accordion-header">¿Cómo ayuda VetSysPro a mejorar la gestión operativa de mi clínica veterinaria?</summary>
+        <div class="accordion-content">
+            <p>
+                VetSysPro ofrece una solución integral para mejorar la gestión operativa de tu clínica veterinaria. Con su registro electrónico de pacientes y programación eficiente de citas, agiliza los procesos administrativos y reduce los tiempos de espera. Además, facilita la comunicación interna y externa, garantiza la seguridad de los datos y proporciona herramientas de análisis para una toma de decisiones más informada.
+            </p>
+        </div>
+    </details>
+
+    <details class="accordion-item">
+        <summary class="accordion-header">¿Cómo garantiza VetSysPro una mejor calidad de atención en mi clínica veterinaria?</summary>
+        <div class="accordion-content">
+            <p>
+                VetSysPro asegura una mejor calidad de atención en tu clínica veterinaria al proporcionar acceso rápido a información crítica a través de su registro electrónico de pacientes, una programación eficiente de citas que reduce los tiempos de espera, una comunicación mejorada con recordatorios automáticos, y medidas de seguridad de datos sólidas. Además, su capacidad de análisis de datos facilita la identificación de áreas de mejora y la toma de decisiones fundamentadas para optimizar los servicios y procesos de la clínica.
+            </p>
+        </div>
+    </details>
+
+</div>
+  {% comment "" %} -------------- pie de pagina -------------------{% endcomment %}
+<footer>
+    <div class="footer-content">
+        <p>&copy; 2024 VetSysPro</p>
+    </div>
+</footer>
+{% endblock content %}
+
+
+{% block Scripts %}
+
+{% endblock Scripts %}

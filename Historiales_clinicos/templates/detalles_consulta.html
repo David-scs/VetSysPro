@@ -1,0 +1,135 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+
+{% block title %}Historial Clinico{% endblock %}
+
+{% comment "" %} -------------- estyles -------------------{% endcomment %}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'styles/sidebar.css' %}">
+<link rel="stylesheet" href="{% static 'styles/sidebar_Mascota.css' %}">
+<link rel="stylesheet" href="{% static 'styles/detalles_consulta.css' %}">
+{% endblock styles %}
+
+{% comment "" %} -------------- content -------------------{% endcomment %}
+{% block content %}
+    {% comment "" %} -------------- sidebar principal -------------------{% endcomment %}
+    {% include "layouts/partials/sidebar.html" %}
+    
+    <main class="main">
+        <div class="container">
+            {% comment "" %} -------------- contenedor de la sidebar Mascota -------------------{% endcomment %}
+            
+            {% include "layouts/partials/sidebar__mascota.html" %}
+            
+            
+            {% comment "" %} -------------- Contenedor padre de la tabla -------------------{% endcomment %}
+            <div class="container__principal">
+                {% comment "" %} -------------- Codigo detalles de la consulta tabla -------------------{% endcomment %}
+                <div class="div__head">
+                    <h1>Detalles de la consulta</h1>
+                </div>
+
+                <div class="tabla__consulta">
+                    <h4 class="titulo">Consulta {{consulta.id}} : <br>{{consulta.fecha}}</h4>
+                    <hr class="separador">
+                    {% comment "" %} -------------- Codigo tabla datos consulta -------------------{% endcomment %}
+                    <div class="container__tablaConsultas">
+                        <table class="tabla1">
+                            <tbody>
+                                <tr>
+                                    <th>Motivo</th>
+                                    <td>{{consulta.motivo}}</td>
+                                </tr>
+                                
+                            </tbody>
+                        </table>
+
+                        <table class="tabla2">
+                            <tbody>
+                                <tr>
+                                    <th>Prueba diagnostica requerida</th>
+                                    <td>{{consulta.prueba_diagnostica}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <br>
+                    <h4 class="titulo">Datos diagnosticos</h4>
+                    <hr class="separador">
+                    {% comment "" %} -------------- Codigo tabla diagnosticos -------------------{% endcomment %}
+                    <div class="container__TablaDatosDiagnosticos">
+                        <table class="table1">
+                            <tbody>
+                                <tr>
+                                    <th>Diagnostico diferencial</th>
+                                    <td>{{consulta.diagnostico_diferencial}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Diagnostico definitivo</th>
+                                    <td>{{consulta.diagnostico_definitivo}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table class="table2">
+                            <tbody>
+                                <tr>
+                                    <th>Pronostico</th>
+                                    <td> {{consulta.pronostico}}</td>
+                                </tr>
+    
+                                <tr>
+                                    <th>Seguimiento</th>
+                                    <td> {{consulta.seguimiento}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <br>
+                    <h4 class="titulo">Datos examen fisico</h4>
+                    <hr class="separador">
+                    {% comment "" %} -------------- Codigo tabla del examen fisico -------------------{% endcomment %}
+                    <div class="container_TablaExamenFisico">
+                        <table class="table1">
+                            <tbody>
+                                <tr>
+                                    <th>Temperatura</th>
+                                    <td> {{consulta.temperatura_corporal}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Frecuencia cardiaca</th>
+                                    <td>{{consulta.frecuencia_cardiaca}} </td>
+                                </tr>
+                                
+                                <tr>
+                                    <th>Peso</th>
+                                    <td>{{consulta.peso_examen}}</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                        <table class="tabla2">
+                            <tbody>
+                                <tr>
+                                    <th>Observaciones del examen fisico</th>
+                                    <td>{{consulta.observaciones_examen}}</td>
+                                </tr>
+    
+                                <tr>
+                                    <th>Receta médica</th>
+                                    <td>{{consulta.receta_medica}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                </div>
+
+    </main>
+{% endblock %}
+
+{% comment "" %} -------------- scripts -------------------{% endcomment %}
+{% block scripts %}
+<script src="{% static 'js/sidebar_Mascota.js' %}"></script>
+{% endblock scripts %}

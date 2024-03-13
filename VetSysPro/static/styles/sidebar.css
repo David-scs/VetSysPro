@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap');
+
+/* Variables */
+:root {
+    /* Colores */
+    --primary-color: #4a3aff;
+    --Secondary-1: #170F49;
+    --neutral--300:#EFF0F9;
+    --blanco:#FFFFFF;
+    --negro:#000000;
+  
+    /* Tipografias */
+    --fuente-200: 200;
+    --fuente-400: 400;
+    --fuente-600: 600;
+  }
+
+   /* reset */
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-color) var(--blanco);
+    /* outline: 1px solid rgba(255, 0, 0, 0.514);  */
+}
+
+/* styles --------------------------------*/
+body{
+    flex-direction: row;
+    background-color: var(--blanco);
+    
+    
+}
+
+
+.nav{
+    position: fixed;
+    width: calc(100% - 260px);
+    height: 4.375rem;
+    margin-left: 260px;
+    display: flex;
+    justify-content: space-between;
+    
+  
+
+    .nav__container{
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+
+        .nav__title{
+            justify-content: center;
+            align-self: center;
+            margin: 0 4rem;
+            font-size: 2rem;
+            font-weight: var(--fuente-400);
+        }
+
+        .user__container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap : 1rem;
+            margin: 0 2rem;
+
+            .user__img--container{
+                width: 2.25rem;
+                height: 2.25rem ;
+                
+                .user__img{
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 50%;
+                }
+            }
+            .user__details{
+
+                .user__name{
+                    font-size: 1rem;
+                    font-weight: var(--fuente-400);
+                }
+                
+
+            }
+
+        }        
+    }
+}
+
+
+.aside{
+    position: fixed;
+    height: 100%;
+    width: 260px;
+    padding: 0 1rem ;
+    
+
+    .aside__header{
+        width: 100%;
+        object-fit: contain;
+
+        .header__img{
+            width: 90%;
+            height: 5rem;
+        }
+    }
+
+    .aside__nav{
+        height: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        margin-top: 40%;
+       
+
+        .nav__a{  
+            padding:  .625rem;
+            margin: .625rem 0 ;
+            border-radius: .625rem;
+            display: flex;
+            color: var(--Secondary-1);
+            width: 100%;
+            text-decoration: none;
+            align-items: center;
+            
+            .nav__h3{
+                font-size: 1rem;
+                margin: 0rem .625rem;
+                font-weight: var(--fuente-400);
+            }
+        }
+
+        a:hover, .selected{
+            background-color:var(--primary-color);
+            color: var(--blanco);
+        }
+    }
+}
+
+

@@ -1,0 +1,125 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+
+{% block title %}Historial Clinico{% endblock %}
+
+{% comment "" %} -------------- styles -------------------{% endcomment %}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'styles/sidebar.css' %}">
+<link rel="stylesheet" href="{% static 'styles/sidebar_Mascota.css' %}">
+<link rel="stylesheet" href="{% static 'styles/vista_mascota.css' %}">
+{% endblock styles %}
+
+{% comment "" %} -------------- content -------------------{% endcomment %}
+{% block content %}
+    {% comment "" %} -------------- sidebar principal -------------------{% endcomment %}
+    {% include "layouts/partials/sidebar.html" %}
+    <main class="main">
+        <div class="container">
+            {% comment "" %} -------------- sidebar mascota -------------------{% endcomment %}
+            {% include "layouts/partials/sidebar__mascota.html" %}
+
+            <div class="container__principal">
+                {% comment "" %} -------------- tabla datos de la mascota -------------------{% endcomment %}
+                <div class="div__head">
+                    <h1>Informacion Mascota</h1>
+                </div>
+    
+                <div class="tabla__datosMascota">
+                    <h4 class="titulo">Datos mascota</h4>
+                    <hr class="separador">
+                    {% comment "" %} -------------- tabla datos basicos -------------------{% endcomment %}
+                    <div class="container__tablaDatosBasicos">
+                        <table class="tabla1">
+                            <tbody>
+                               
+                                <tr>
+                                    <th>Nombre</th>
+                                    <td>{{mascota.nombre}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Especie</th>
+                                    <td>{{mascota.especie}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Raza</th>
+                                    <td>{{mascota.raza}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+    
+                        <table class="tabla2">
+                            <tbody>
+                                <tr>
+                                    <th>Sexo</th>
+                                    <td>{{mascota.sexo}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Color</th>
+                                    <td>{{mascota.color}}</td>
+                                </tr><tr>
+                                    <th>Edad</th>
+                                    <td>{{mascota.edad}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <br>
+                    <h4 class="titulo">Datos medicos</h4>
+                    <hr class="separador">
+                    {% comment "" %} -------------- tabla datos medicos -------------------{% endcomment %}
+                    <div class="container__TablaDatosMedicos">
+                        <table class="table1">
+                            <tbody>
+                                <tr>
+                                    <th>Peso</th>
+                                    <td>{{mascota.peso}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Personalidad</th>
+                                    <td>{{mascota.personalidad}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Alimentacion</th>
+                                    <td>{{mascota.tipoalimentacion}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Cantidad Alimentos</th>
+                                    <td>{{mascota.cantidadAlimento}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table class="table2">
+                            <tbody>
+                                
+                                <tr>
+                                    <th>Frecuencia Baño</th>
+                                    <td>{{mascota.frecuenciaBano}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Frecuencia Alimentaria</th>
+                                    <td>{{mascota.frecuenciaAlimentacion}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Antecedentes</th>
+                                    <td>{{mascota.antecedentesClinicos}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Estado Reproductivo</th>
+                                    <td>{{mascota.EstadoReproductivo.Estado}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}
+
+{% comment "" %} -------------- script -------------------{% endcomment %}
+{% block scripts %}
+<script src="{% static 'js/vista_mascota.js' %}"></script>
+<script src="{% static 'js/sidebar_Mascota.js' %}"></script>
+{% endblock scripts %}

@@ -1,0 +1,188 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+
+{% block title %}Historial Clinico{% endblock %}
+
+{% comment "" %} -------------- styles -------------------{% endcomment %}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'styles/sidebar.css' %}">
+<link rel="stylesheet" href="{% static 'styles/sidebar_Mascota.css' %}">
+<link rel="stylesheet" href="{% static 'styles/vacunas.css' %}">
+{% endblock styles %}
+
+{% comment "" %} -------------- content -------------------{% endcomment %}
+{% block content %}
+    {% comment "" %} -------------- sidebar principal -------------------{% endcomment %}
+    {% include "layouts/partials/sidebar.html" %}
+
+    <main class="main">
+        <div class="container">
+            {% comment "" %} -------------- contenedor de la sidebar Mascota -------------------{% endcomment %}
+            
+            {% include "layouts/partials/sidebar__mascota.html" %}
+            
+            
+            {% comment "" %} -------------- Contenedor datos vacunas -------------------{% endcomment %}
+            <div class="container__principal">
+                {% comment "" %} -------------- Codigo formulario -------------------{% endcomment %}
+                <div class="div__head">
+                    <h1>Vacunas</h1>
+                    <button class="div__btn" id="open-button">Registrar vacuna</button>
+                </div>
+
+                <div class="window-background" id="window-background">
+                    <div class="window-container" id="window-container">
+                        <main class="main__vacunas">
+                            <form id="formularioVacunas" class="main__form" action="#">
+                                <div class="main__div fila1Co1">
+                                    <label class="div__label" for="fechaVacuna">Fecha aplicación</label>
+                                    <input class="div__input" type="date" id="fechaVacuna">
+                                </div>
+                                
+                                <div class="main__div fila1Co2">
+                                    <label class="div__label" for="nombreVacuna">Nombre Vacuna</label>
+                                    <input class="div__input" type="text" id="nombreVacuna">
+                                </div>          
+                                <div class="main__div fila1Co1">
+                                    <label class="div__label" for="nombreVacuna">Dosis</label>
+                                    <input class="div__input" type="text" id="nombreVacuna">
+                                </div>   
+                                <div class="main__div fila2Co1">
+                                    <label class="div__label" for="idMascota">Mascota</label>
+                                    <select class="div__input" name="idMascota" id="idMascota">
+                                        <option value="fabio">Fabio</option>
+                                    </select>
+                                </div>
+                                
+            
+                                <div class="main__div textarea">
+                                    <label class="div__label" for="recomendacionesVacuna">Recomendaciones</label>
+                                    <textarea  class="div__textarea" name="recomendacionesVacuna" id="recomendacionesVacuna   " cols="30" rows="10"></textarea>
+                                </div>
+                                
+                    
+                                <div class="main__div-btn">
+                                    <button class="div__btn" id="close-button" >Cancelar</button>
+                                    <button class="div__btn" type="submit" onclick="return confirmarEnvio()">Guardar</button>
+                                </div>
+                    
+                            </form>
+                        </main>
+                    </div>
+                </div>
+            
+                {% comment "" %} -------------- ventana de confirmacion -------------------{% endcomment %}
+                <div id="modal" class="modal">
+                    <div class="modal-content">
+                      <p>¿Estás seguro de que quieres enviar el formulario?</p>
+                      <br>
+                      <button class="div__btn confirmar" onclick="enviarFormulario()">Sí, enviar</button>
+                      <button class="div__btn confirmar" onclick="cerrarModal()">Cancelar</button>
+                    </div>
+                </div>
+
+                {% comment "" %} -------------- Codigo tabla -------------------{% endcomment %}
+                <div class="containerMayor">
+                    <div class="containerLine">
+                        <div class="box">
+                            <h3>Nombre vacuna</h3>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <th>Fecha Aplicacion</th>
+                                        <td>08/03/2024</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Recomendaciones</th>
+                                        <td>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestias ab atque esse nesciunt neque eius! Ipsam ut a illo expedita, saepe et possimus magnam, ipsum neque, sit fugit exercitationem aliquid!</td>
+                                    </tr>
+                            </table>
+                        </div>                   
+    
+                        <div class="box">
+                            <h3>Nombre vacuna</h3>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <th>Fecha Aplicacion</th>
+                                        <td>08/03/2024</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Recomendaciones</th>
+                                        <td>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestias ab atque esse nesciunt neque eius! Ipsam ut a illo expedita, saepe et possimus magnam, ipsum neque, sit fugit exercitationem aliquid!</td>
+                                    </tr>
+                            </table>
+                        </div>
+    
+                        <div class="box">
+                            <h3>Nombre vacuna</h3>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <th>Fecha Aplicacion</th>
+                                        <td>08/03/2024</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Recomendaciones</th>
+                                        <td>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestias ab atque esse nesciunt neque eius! Ipsam ut a illo expedita, saepe et possimus magnam, ipsum neque, sit fugit exercitationem aliquid!</td>
+                                    </tr>
+                            </table>
+                        </div>
+    
+                        <div class="box">
+                            <h3>Nombre vacuna</h3>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <th>Fecha Aplicacion</th>
+                                        <td>08/03/2024</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Recomendaciones</th>
+                                        <td>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestias ab atque esse nesciunt neque eius! Ipsam ut a illo expedita, saepe et possimus magnam, ipsum neque, sit fugit exercitationem aliquid!</td>
+                                    </tr>
+                            </table>
+                        </div>
+    
+                        <div class="box">
+                            <h3>Nombre vacuna</h3>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <th>Fecha Aplicacion</th>
+                                        <td>08/03/2024</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Recomendaciones</th>
+                                        <td>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestias ab atque esse nesciunt neque eius! Ipsam ut a illo expedita, saepe et possimus magnam, ipsum neque, sit fugit exercitationem aliquid!</td>
+                                    </tr>
+                            </table>
+                        </div>
+                        <div class="box">
+                            <h3>Nombre vacuna</h3>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <th>Fecha Aplicacion</th>
+                                        <td>08/03/2024</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Recomendaciones</th>
+                                        <td>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestias ab atque esse nesciunt neque eius! Ipsam ut a illo expedita, saepe et possimus magnam, ipsum neque, sit fugit exercitationem aliquid!</td>
+                                    </tr>
+                            </table>
+                        </div>
+    
+                    </div>
+                </div>
+
+            </div>
+        </div>       
+    </main>
+{% endblock %}
+
+{% comment "" %} -------------- script -------------------{% endcomment %}
+{% block scripts %}
+<script src="{% static 'js/listar_vacunas.js' %}"></script>
+<script src="{% static 'js/sidebar_Mascota.js' %}"></script>
+{% endblock scripts %}

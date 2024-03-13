@@ -1,0 +1,43 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+
+{% block title %}VetSysPro{{ propietario.nombres }}{% endblock %}
+
+{% comment "" %} -------------- styles -------------------{% endcomment %}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'styles/vistaPropietario.css' %}">
+<link rel="stylesheet" href="{%  static 'styles/sidebar.css' %}">
+{% endblock styles %}
+
+{% block content %}
+{% comment "" %} -------------- sidebar principal -------------------{% endcomment %}
+{% include "layouts/partials/sidebar.html" %}
+
+ <main class="main">
+    <div class="container">
+        {% comment "" %} -------------- formulario mascota -------------------{% endcomment %}        
+        {% include "partials/Form_Mascota.html" %}
+    
+        {% comment "" %} -------------- ventana modal confirmacion -------------------{% endcomment %}
+        <div id="modal" class="modal">
+            <div class="modal-content">
+              <p>¿Estás seguro de que quieres enviar el formulario?</p>
+              <br>
+              <button class="div__btn-formulario confirmar" onclick="enviarFormulario()">Sí, enviar</button>
+              <button class="div__btn-formulario confirmar" onclick="cerrarModal()">Cancelar</button>
+            </div>
+        </div>
+
+        {% comment "" %} -------------- tabla datos propietario -------------------{% endcomment %}
+        {% include "partials/Data_Cliente.html" %}
+
+        {% comment "" %} -------------- tabla datos mascotas asociadas -------------------{% endcomment %}
+        {% include "partials/Table_Mascotas_cliente.html" %}
+    </div>
+</main>
+{% endblock %}
+
+{% comment "" %} -------------- script -------------------{% endcomment %}
+{% block scripts %}
+<script src="{% static 'js/vistaPropietario.js' %}"></script>
+{% endblock scripts %}

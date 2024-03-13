@@ -1,0 +1,72 @@
+{% load static %}
+
+{% block stylesheets %}
+
+<link rel="stylesheet" href="{%  static 'styles/sidebar.css' %}">
+<link rel="stylesheet" href="{% static "styles/logout.css" %}">
+
+{% endblock stylesheets %}
+
+{% comment %} estructura navbar {% endcomment %}
+
+
+<nav class="nav">
+    <div class="nav__container">
+        <div class="nav__title">
+        </div>
+        <div class="user__container">
+            <div>
+                <i class="fa-solid fa-bell"></i>
+            </div>
+            <div>
+                <i class="fa-solid fa-envelope"></i>
+            </div>
+            <div class="user__img--container">
+                <img class="user__img" src="{%  static 'assets/fotojpg.jpg' %}" alt="foto">
+            </div>
+            <div class="user__details">
+                {{ user.first_name }}
+                </h3>
+                <h6 class="user__role" >Admin</h6>
+            </div>
+            <div>
+                <form action="{% url 'logout' %}" method="post" class="logout-form">
+                    {% csrf_token %}
+                    <button type="submit" class="logout-button">Log out</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</nav>
+
+{% comment %} estructura sidebar {% endcomment %}
+<aside class="aside">
+    <header class="aside__header">
+        <img class="header__img" src="{%  static 'assets/logo.svg' %}" alt="logo">
+    </header>
+    <nav class="aside__nav">
+        <a class="nav__a boton {% if current_page == 'dashboard' %}selected{% endif %}" href="{% url "dashboard" %}">
+            <!-- Contenido del enlace -->
+            <i class="fa-solid fa-chart-simple"></i>
+            <h3 class="nav__h3" >Dashboard</h3>
+        </a>
+        <a class="nav__a boton  {% if current_page == 'consultorio' %}selected{% endif %}" href="{% url "consultorio" %} ">
+            <!-- Contenido del enlace -->
+            <i class="fa-solid fa-paw"></i>
+            <h3 class="nav__h3">Consultorio</h3>
+        </a>
+        <a  class="nav__a boton" href="#">
+            <i class="fa-regular fa-calendar-days"></i>
+            <h3 class="nav__h3" >agenda</h3>
+        </a>
+        <a  class="nav__a boton" href="#">
+            <i class="fa-solid fa-users"></i>
+            <h3 class="nav__h3">Usuarios</h3> 
+        </a>
+    </nav>
+</aside>
+
+{% block scripts %}
+
+
+{% endblock scripts %}

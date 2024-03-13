@@ -1,0 +1,111 @@
+/*Estilos contenedor padre*/
+.main{
+    position: fixed;
+    width: calc(100% - 16.25rem);
+    max-height: 100vh;
+    margin: 4.0625rem 1rem 0 16.25rem;
+    margin-top: 4.0625rem;
+    background-color: rgb(255, 255, 255);
+
+    .container{    
+        max-height: 90%;
+        max-width: 98%;
+        background-color: var(--neutral--300);
+        border-radius: 1rem;
+        display: grid;
+        grid-template-columns: 25% 75%;
+
+        /*Estilos contenedor principal (contiene la información cambiante)*/
+        .container__principal{
+            margin: .3125rem .3125rem 1.5625rem 0rem;
+            /*Estilos para la tabla*/
+            .tabla__consulta{
+                width: 100%;
+                border-collapse: collapse;
+                max-height: 34.375rem; 
+                overflow: auto;
+
+                /*estilos apartado consultas*/
+                .container__tablaConsultas{
+                    display: grid;
+                    grid-template-columns: 1fr 1fr; 
+                    gap: 1.25rem;
+                    table{
+                        width: 100%;
+                        table-layout: fixed;
+                    }
+                    tr{
+                        display: flex;
+                        flex-direction: column;
+                    }
+
+                    td, th{
+                        min-width: 2.5rem;
+                    }
+                }
+
+                /*estilos apartado diagnostico*/
+                .container__TablaDatosDiagnosticos{
+                    display: grid;
+                    grid-template-columns: 1fr 1fr; 
+                    gap: 1.25rem;
+
+                    table{
+                        width: 100%;
+                        table-layout: fixed;
+                    }
+
+                    tr{
+                        display: flex;
+                        flex-direction: column;
+                    }
+
+                    td, th{
+                        min-width: 2.5rem;
+                    }
+                }
+
+                /*apartado examen fisico*/
+                .container_TablaExamenFisico{
+                    display: grid;
+                    grid-template-columns: 1fr 1fr; 
+                    gap: 1.25rem;
+
+                    table{
+                        width: 100%;
+                        table-layout: fixed;
+                    }
+
+                    tr{
+                        display: flex;
+                        flex-direction: column;
+                    }
+
+                    td, th{
+                        min-width: 2.5rem;
+                    }
+                }
+ 
+                th, td {
+                    text-align: left;
+                    padding: .5rem;
+                    border-bottom: .0625rem solid #ddd;
+                    width: 100%;
+                }
+                .separador{
+                    border: none;
+                    height: .0938rem;
+                    width: 100%;
+                    background-color: #4A3AFF;
+                }
+            }
+
+        }
+    }
+
+    /*tabla principal*/
+    .table{
+        grid-column: 2;
+    }           
+
+}

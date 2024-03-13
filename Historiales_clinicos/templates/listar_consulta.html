@@ -1,0 +1,204 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+
+{% block title %}Historial Clinico{% endblock %}
+
+{% comment "" %} -------------- styles -------------------{% endcomment %}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'styles/sidebar.css' %}">
+<link rel="stylesheet" href="{% static 'styles/sidebar_Mascota.css' %}">
+<link rel="stylesheet" href="{% static 'styles/consulta.css' %}">
+{% endblock styles %}
+
+{% comment "" %} -------------- content -------------------{% endcomment %}
+{% block content %}
+    {% comment "" %} -------------- sidebar principal -------------------{% endcomment %}
+    {% include "layouts/partials/sidebar.html" %}
+
+    <main class="main">
+        <div class="container">
+            {% comment "" %} -------------- contenedor de la sidebar Mascota -------------------{% endcomment %}
+            {% include "layouts/partials/sidebar__mascota.html" %}
+
+            {% comment "" %} -------------- Contenedor principal datos de la consulta -------------------{% endcomment %}
+            <div class="container__principal">
+                {% comment "" %} -------------- Codigo enacabezado -------------------{% endcomment %}
+                <div class="div__head">
+                    <h1>Consultas</h1>
+                    <button class="div__btn" id="open-button">Registrar consulta</button>
+                </div>
+                {% comment "" %} -------------- Codigo de el formualrio -------------------{% endcomment %}
+                
+                <div class="window-background" id="window-background">
+                    <div class="window-container" id="window-container">
+                        <main class="main__consulta">
+                            <form id="formularioConsulta" class="main__form" action="/registrar_consulta/" method="post">
+                                {% csrf_token %}
+                                <div class="titulo1">
+                                    <h3  >Datos consulta</h3>
+                                    <hr>
+                                </div>
+                                <div class="containerConsulta">
+
+                                    <div class="main__div group1">
+                                        <label class="div__label" for="fecha">Fecha</label>
+                                        <input class="div__input" type="text" id="fecha" name="fecha" value="{{ fecha_actual }}" readonly >
+                                    </div>
+                                    
+                                    <div class="main__div group1">
+                                        <label class="div__label" for="motivoConsulta">Motivo</label>
+                                        <input class="div__input" type="text" id="motivoConsulta" name="motivoConsulta">
+                                    </div>
+                                    
+                                    <div class="main__div group2">
+                                        <label class="div__label" for="detallesConsulta">Detalles</label>
+                                        <textarea class="div__input textarea" name="detallesConsulta" id="detallesConsulta" cols="30" rows="10"></textarea>
+                                    </div>
+                            
+                                    <div class="main__div">
+                                        <label class="div__label" for="pruebaDiagnosticaConsulta">Prueba diagnostica</label>
+                                        <textarea class="div__input textarea" name="pruebaDiagnosticaConsulta" id="pruebaDiagnosticaConsulta" cols="30" rows="10"></textarea>
+                                    </div>
+                                </div>
+                                <div class="titulo2">
+                                    <h3  >Datos Diagnostico</h3>
+                                    <hr>
+                                </div>
+                                <div class="containerDiagnostico">
+                                    
+                                    <div class="main__div group2  ">
+                                        <label class="div__label" for="diagnosticoDiferencial">Diagnostico diferencial</label>
+                                        <input class="div__input" type="text" id="diagnosticoDiferencial" name="diagnosticoDiferencial">
+                                    </div>
+                            
+                                    <div class="main__div  ">
+                                        <label class="div__label" for="diagnosticoDefinitivo">Diagnostico definitivo</label>
+                                        <input class="div__input" type="text" id="diagnosticoDefinitivo" name="diagnosticoDefinitivo">
+                                    </div>
+                            
+                                    
+                                    <div class="main__div group2">
+                                        <label class="div__label " for="pronosticoConsulta">Pronostico</label>
+                                        <input class="div__input " type="texy" id="pronosticoConsulta" name="pronosticoConsulta">
+                                    </div>
+                                
+                                    <div class="main__div ">
+                                        <label class="div__label" for="seguimientoConsulta">Seguimiento</label>
+                                        <input class="div__input " type="text" id="seguimientoConsulta"name="seguimientoConsulta">
+                                    </div>
+                                </div>
+                                
+                                <div class="titulo3">
+                                    <h3  >Datos Examen Fisico</h3>
+                                    <hr>
+                                </div>
+                                <div class="containerExamenFisico">
+                                    
+                                    <div class="div__container ">
+                                        <div class="main__div op1">
+                                            <label class="div__label" for="temperaturaCorporal">Temperatura corporal</label>
+                                            <input class="div__input pequeño" type="text" id="rhMastemperaturaCorporalcota" name="temperaturaCorporalConsulta">
+                                        </div>
+                                    
+                            
+                                        <div class="main__div op1">
+                                            <label class="div__label" for="frecuenciaCardiaca">Frecuencia cardiaca</label>
+                                            <input class="div__input pequeño" type="number" id="frecuenciaCardiaca" name="frecuenciaCardiacaConsulta">
+                                        </div>
+                                        
+                                        <div class="main__div ">
+                                            <label class="div__label" for="pesoExamen">Peso examen</label>
+                                            <input class="div__input pequeño" type="number" id="pesoExamen"name="pesoExamenConsulta">
+                                        </div>
+                                        
+                                    </div>
+            
+                                    <div class="div_container-textarea">
+                                        <div class="main__div div1 ">
+                                            <label class="div__label" for="observacionesExamen">Observaciones</label>
+                                            <textarea class="div__input" name="observaciones_examen" id="observacionesExamen" cols="30" rows="10"   ></textarea>
+                                        </div>
+                
+                                        <div class="main__div div2 ">
+                                            <label class="div__label" for="recetaMedica">Receta medica</label>
+                                            <textarea class="div__input"  id="recetaMedica" cols="30" rows="10" name="recetaMedicaConsulta"></textarea>
+                                        </div>
+                                    </div>
+                                    
+                        
+                                    <div class="main__div group1">
+                                        <label class="div__label" for="mascota">Mascota</label>
+                                        <select class="div__input" name="idMascota" id="mascota">
+                                            <option value="{{ mascota.idMascota }}">{{ mascota.idMascota }}</option>
+                                        </select>
+                                    </div>
+                                    
+            
+                                    <div class="main__div-btn">
+                                        <button class="div__btn" id="close-button" >Cancelar</button>
+                                        <button class="div__btn" type="submit" onclick="return confirmarEnvio()">Guardar</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </main>
+                    </div>
+                </div>
+                
+            
+                {% comment "" %} -------------- ventana de confirmación  -------------------{% endcomment %}
+                {% comment %} <div id="modal" class="modal">
+                    <div class="modal-content">
+                      <p>¿Estás seguro de que quieres enviar el formulario?</p>
+                      <button type="submit"class="div__btn confirmar" onclick="enviarFormulario()">Sí, enviar</button>
+                      <button class="div__btn confirmar" onclick="cerrarModal()">Cancelar</button>
+                    </div>
+                </div> {% endcomment %}
+                
+                {% comment "" %} -------------- Codigo tabla -------------------{% endcomment %}
+                <div class="table">
+                    <section class="table__header">
+                        <div class="input_group">
+                            <input type="search" placeholder="Buscar">
+                        </div>
+                    </section>
+                    <section class="table__body">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th> Codigo </th>
+                                    <th> Fecha </th>
+                                    <th> Motivo </th>
+                                    <th> Detalles</th>
+                                    <th> Acciones  </th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                {% for consulta in consultas %}
+                                <tr>
+                                    <td>{{ consulta.id }}</td>
+                                    <td>{{ consulta.fecha }}</td>
+                                    <td>{{ consulta.motivo }}</td>
+                                    <td>{{ consulta.detalles }}</td>
+                                    <td>
+                                        <a class="div__btn" href="/detalles_consulta/{{ consulta.id }}/">Detalles</a> 
+                                    </td> 
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </section>
+                </div>
+
+            </div>
+        </div>
+
+            
+    </main>
+{% endblock %}
+
+{% comment "" %} -------------- script -------------------{% endcomment %}
+{% block scripts %}
+<script src="{% static 'js/consulta.js' %}"></script>
+<script src="{% static 'js/sidebar_Mascota.js' %}"></script>
+{% endblock scripts %}

@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {% comment %} bloque para el titulo de la pagina {% endcomment %}
+    <title>{% block title %}{% endblock title %}</title>
+    
+    {% comment %} bloque para los estilos de la pagina {% endcomment %}
+    {% block styles %}{% endblock styles%}
+    
+
+</head>
+<body>
+
+    {% block content %}{% endblock content %}
+
+
+    {% comment %} bloque para los scripts de la pagina {% endcomment %}
+    {% block scripts %}
+    
+    {% endblock scripts %}
+    <script src="https://kit.fontawesome.com/6aaa98cece.js" crossorigin="anonymous"></script>
+</body>
+</html>

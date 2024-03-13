@@ -1,0 +1,219 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+.main__index{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.header{
+    width: 100%;
+    height: 7%;
+    padding: 1.25rem;
+    background-color: #E9E7FF;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: fixed;
+
+    .div__logo img{
+        width: 15.625rem;
+        margin-left: 5rem;
+    }
+
+    .div__opcions{
+        margin-left: 14.375rem;
+        ul li {
+            display: inline-block;
+            font-size: 1.25rem;
+            margin-right: 3.125rem;
+            margin-top: .625rem;
+            padding: .25rem .1875rem;          
+            
+        }
+
+        ul button{
+            background-color: #E9E7FF;
+            border: none;
+            font-size: 1.25rem;
+            cursor: pointer;
+        }
+
+        ul{
+            li:hover{
+                border-bottom: .125rem #4A3AFF solid;
+            }
+        }
+    }     
+}
+
+
+.container__header{
+    background-color: #E9E7FF;
+    display: grid;
+    grid-column: 1fr 1fr;
+    z-index: -1;
+    padding-top: 6.25rem;
+
+    .container__titulos{
+        background-color: #E9E7FF;
+        grid-column: 1;
+        grid-row: 1;
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        padding: 2.8125rem;
+
+        .div__title, .div__subTitle{
+            width: 31.25rem;
+        }
+
+        .div__subTitle{
+            font-weight: normal;
+            margin-top: 1.125rem;
+        }
+
+        a{
+            width: 6.875rem;
+            padding: .3125rem 0rem .3125rem .3125rem;
+            background-color: #4A3AFF;
+            color: #ffff;
+            cursor: pointer;
+            border: none;
+            border-radius: .3125rem;
+            margin-top: 1.125rem;
+            
+        }
+
+        a:hover{
+            color: #ffff;
+            box-shadow: 0 0 .3125rem #4A3AFF;
+            border: .0625rem #4A3AFF solid;
+            cursor: pointer;
+        }
+    }
+
+    .container__logo{
+        grid-column: 2;
+        grid-row: 1;
+        width: 12.5rem;
+        display: grid;
+        margin-left: 20%;
+        margin-bottom: 7%;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .container__logo img{
+        width: 12.5rem;
+    }
+}
+
+
+
+.main__index{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-row: 1fr 1fr 1fr;
+    grid-gap: .625rem;
+
+    .img__objetivo{
+        display:grid;
+        justify-content: center;
+        align-items: center;
+        margin: 1.25rem;
+    }
+
+    .p__objetivo{
+        display:grid;
+        justify-content: center;
+        align-items: center;
+        padding: 5.625rem;
+    }
+
+    .img__mision{
+        grid-column: 2;
+        display:grid;
+        justify-content: center;
+        align-items: center;
+        margin: 1.25rem;
+    }
+
+    .p__mision{
+        grid-column: 1;
+        grid-row: 2;
+        display:grid;
+        justify-content: center;
+        align-items: center;
+        padding: 5.625rem;
+        background-color: #E9E7FF;
+        width: 100%;
+        border-radius: 0rem .9375rem .9375rem 0rem;
+    }
+
+    .img__vision{
+        grid-column: 1;
+        grid-row: 3;
+        display:grid;
+        justify-content: center;
+        align-items: center;
+        margin: 1.25rem;
+    }
+
+    .p__vision{
+        grid-column: 2;
+        grid-row: 3;
+        display:grid;
+        justify-content: center;
+        align-items: center;
+        padding: 5.625rem;
+    }
+
+    
+}
+
+.accordion__preguntas{
+    width: 60%;
+    margin: 0 auto;
+    margin-top: 5.625rem;
+    margin-bottom: 5.625rem;
+    border-radius:.9375rem;
+    height: auto;
+    background-color: #E9E7FF;
+    padding: 1.125rem;
+
+    .accordion-item {
+        border-bottom: .0625rem solid #4A3AFF;
+        background-color: #E9E7FF;
+        
+        .accordion-header {
+            background-color: #E9E7FF; 
+            padding: .625rem 1.25rem; 
+            cursor: pointer;
+            font-weight:600;
+        }
+        .accordion-content {
+            padding: .625rem 1.25rem;
+        }
+        
+    }
+}
+
+
+.footer-content{
+    background-color: #E9E7FF;
+    width: 100%;
+    height: 6.25rem ;
+    display: grid;
+    justify-content: center;
+}

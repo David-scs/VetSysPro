@@ -1,0 +1,128 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+
+{% block title %}Historial Clinico{% endblock %}
+
+{% comment "" %} -------------- styles -------------------{% endcomment %}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'styles/sidebar.css' %}">
+<link rel="stylesheet" href="{% static 'styles/sidebar_Mascota.css' %}">
+<link rel="stylesheet" href="{% static 'styles/procedimiento.css' %}">
+{% endblock styles %}
+
+{% comment "" %} -------------- content -------------------{% endcomment %}
+{% block content %}
+    {% comment "" %} -------------- sidebar principal -------------------{% endcomment %}
+    {% include "layouts/partials/sidebar.html" %}
+
+    <main class="main">
+        <div class="container">
+            {% comment "" %} -------------- contenedor de la sidebar Mascota -------------------{% endcomment %}
+            {% include "layouts/partials/sidebar__mascota.html" %}
+            
+            {% comment "" %} -------------- Contenedor de los datos procedimiento -------------------{% endcomment %}
+            <div class="container__principal">
+                {% comment "" %} -------------- Codigo formulario -------------------{% endcomment %}
+                <div class="div__head">
+                    <h1>Procedimientos</h1>
+                    <button class="div__btn" id="open-button">Registrar procedimiento</button>
+                </div>
+                {% comment "" %} -------------- Codigo de el formualrio -------------------{% endcomment %}
+                <div class="window-background" id="window-background">
+                    <div class="window-container" id="window-container">
+                        <main class="main__procedimiento">
+                            <form id="formularioProcedimiento" class="main__form" action="#">
+                                <div class="main__div ">
+                                    <label class="div__label" for="fechaInicioTrata">Fecha</label>
+                                    <input class="div__input" type="date" id="fechaInicioTrata">
+                                </div>  
+            
+                                <div class="main__div ">
+                                    <label class="div__label" for="nombreTratamiento">Nombre</label>
+                                    <input class="div__input" type="text" id="nombreTratamiento">
+                                </div> 
+            
+                                <div class="main__div ">
+                                    <label class="div__label" for="idTratamiento">Tratamiento</label>
+                                    <select class="div__input" name="idTratamiento" id="idTratamiento">
+                                        <option value="fabio">Fabio</option>
+                                    </select>
+                                </div>
+            
+                                <div class="main__div textarea">
+                                    <label class="div__label" for="detallesTratamiento">Detalles</label>
+                                    <textarea name="detallesTratamiento" id="detallesTratamiento" cols="30" rows="10"></textarea>
+                                </div> 
+                             
+                    
+                                <div class="main__div-btn">
+                                    <button class="div__btn" id="close-button" >Cancelar</button>
+                                    <button class="div__btn" type="submit" onclick="return confirmarEnvio()">Guardar</button>
+                                </div>
+                    
+                            </form>
+                        </main>
+                    </div>
+                </div>
+            
+                {% comment "" %} -------------- ventana de confirmacion -------------------{% endcomment %}
+                <div id="modal" class="modal">
+                    <div class="modal-content">
+                      <p>¿Estás seguro de que quieres enviar el formulario?</p>
+                      <button class="div__btn confirmar" onclick="enviarFormulario()">Sí, enviar</button>
+                      <button class="div__btn confirmar" onclick="cerrarModal()">Cancelar</button>
+                    </div>
+                </div>
+                
+                {% comment "" %} -------------- Codigo tabla -------------------{% endcomment %}
+                <div class="table">
+                    <section class="table__header">
+                        <div class="input_group">
+                            <input type="search" placeholder="Buscar">
+                        </div>
+                    </section>
+                    <section class="table__body">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th> Codigo </th>
+                                    <th> Fecha realización </th>
+                                    <th> Nombre Procedimiento</th>
+                                    <th> Detalles </th>
+                                    <th> Nombre Tratamiento  </th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                {% for propietario in propietarios %}
+                                <tr>
+                                    <td>{{ propietario.documento }}</td>
+                                    <td>{{ propietario.nombres }}</td>
+                                    <td>{{ propietario.apellidos }}</td>
+                                    <td>{{ propietario.direccion }}</td>
+                                    <td>{{ propietario.email }}</td>
+                                    <td>{{ propietario.telefono }}</td>
+                                    <td>
+                                        <a href="/Perfil_propietario/{{ propietario.documento }}/">
+                                            <button class="div__btn listar">Ver perfil</button>
+                                        </a>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </section>
+                </div>
+
+            </div>
+        </div>
+
+            
+    </main>
+{% endblock %}
+
+{% comment "" %} -------------- script -------------------{% endcomment %}
+{% block scripts %}
+<script src="{% static 'js/procedimiento.js' %}"></script>
+<script src="{% static 'js/sidebar_Mascota.js' %}"></script>
+{% endblock scripts %}

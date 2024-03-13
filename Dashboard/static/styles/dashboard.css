@@ -1,0 +1,16 @@
+.main{
+    position: fixed;
+    width: calc(100% - 260px);
+    height: 100vh;
+    margin: 65px 1rem 0 260px;
+    margin-top: 65px;
+    background-color: rgb(255, 255, 255);
+
+    .container{    
+        height: 90%;
+        width: 98%;
+        background-color: var(--neutral--300);
+        border-radius: 1rem;
+        padding: 1.25rem;
+    }
+}

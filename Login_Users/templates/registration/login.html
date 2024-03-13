@@ -1,0 +1,54 @@
+
+
+{% extends "layouts/base.html" %}
+{% load static %}
+
+{% block title %}Inicia Sesión{% endblock title %}
+
+{% comment "" %} -------------- styles -------------------{% endcomment %}
+{% block styles %}
+    <link rel="stylesheet" href="{% static "styles/login.css" %}">
+{% endblock styles%}
+
+{% block content%}
+<div>
+        <div class="div__container">
+            <div class="div_logo">
+                <img class="logo" src="{%  static 'assets/logoBlanco.svg' %}" alt="Logo">
+            </div>
+            <div class="div_formulario"> 
+                <div class="form__div">
+                    <h1>¡Bienvenido de nuevo!</h1>
+                </div>
+                {% if form.errors %}
+                <p style="background-color: red;">
+                    su nombre de usuario y contraseña no coinciden.
+                </p>
+                {% else %}
+                <p> Porfavor, ingrese su nombre de usuario y contraseña.</p>
+                {% endif %}  
+                <form action="{% url 'login' %}" method="post">
+                    {% csrf_token %}
+                    {% for field in form %}
+                        <div class="form__div">
+                            {% if field.name == 'username' %}
+                                <input type="text" class="form__input" name="{{ field.name }}" id="{{ field.id }}" placeholder="Nombre de usuario" />
+                            {% elif field.name == 'password' %}
+                                <input type="password" class="form__input" name="{{ field.name }}" id="{{ field.id }}" placeholder="Contraseña" />
+                            {% else %}
+                                {{ field }}
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                    <div class="div__containerBtn">
+                        <button class="div__button" type="submit">Ingresar</button>
+                        <input type="hidden" name="next" value="{{ next }}" />
+                    </div>
+                </form>
+            </div>
+        </div>
+</div>
+    
+
+{% endblock content %}
+

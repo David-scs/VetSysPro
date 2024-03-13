@@ -1,0 +1,63 @@
+<div class="div__propietario">
+    <div class="div__header-Pro">
+        <h2>Propietario <br> {{propietario.nombres}}</h2>
+        <div class="div__btn">
+            <button class="btn">Actualizar </button>
+            <a class="btn" href="../../eliminar_propietario/{{propietario.documento}}">Eliminar</a>
+            
+        </div>
+        
+    </div>
+    <hr class="Separador">
+    <div class="div__datos-Pro">
+        <div class="tabla__propietario">
+            <h4 class="titulo">Datos propietario</h4>
+            <hr class="separador">
+            <table>
+                <tbody>
+                    
+                    <tr>
+                        <th>Documento</th>
+                        <td>{{propietario.documento}}</td>
+                    </tr>
+                    <tr>
+                        <th>Nombres</th>
+                        <td>{{propietario.nombres}}</td>
+                    </tr>
+                    
+                    <tr>
+                        <th>Apellidos</th>
+                        <td>{{propietario.apellidos}}</td>
+                    </tr>
+                    <tr>
+                        <th>Direccion</th>
+                        <td>{{propietario.direccion}}</td>
+                    </tr>
+                    <tr>
+                        <th>Email</th>
+                        <td>a{{propietario.email}}</td>
+                    </tr>
+                    <tr>
+                        <th>telefono</th>
+                        <td>{{propietario.telefono}}</td>
+                    </tr>
+                    <div>
+            </table>
+            <br>
+            <h4 class="titulo">Datos Emergencia</h4>
+            <hr class="separador">
+            <table>
+                                               
+                    <tr>
+                        <th>Nombre completo</th>
+                        <td>{{propietario.nombreEmer}}</td>
+                    </tr>
+                    <tr>
+                        <th>Celular </th>
+                        <td>{{propietario.telefonoEmer}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

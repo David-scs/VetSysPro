@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap');
+
+/* Variables */
+:root {
+    /* Colores */
+    --primary-color: #4A3AFF;
+    --Secondary-1: #170F49;
+    --neutral--300:#EFF0F9;
+    --blanco:#FFFFFF;
+    --negro:#000000;
+  
+    /* Tipografias */
+    --fuente-200: 200;
+    --fuente-400: 400;
+    --fuente-600: 600;
+  }
+
+   /* reset */
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-color) var(--blanco);
+}
+
+/* styles --------------------------------*/
+body{
+    flex-direction: row;
+    background-color: var(--blanco);
+    
+    
+}
+
+.container__sidebar{
+    width: 16.25rem;
+    height: 100%;
+    .aside__mascota{
+        height: 100%;
+        width: 16.25rem;
+        padding: 0 1rem ;
+        background-color: #E9E7FF;
+        border-radius: .9375rem;
+    
+        /*estilos encabezado de la sidebar*/
+        .aside__header{
+            
+            .container__foto img{
+                width: 50%;
+                height: auto;
+                border-radius: .625rem;
+                margin: 1.875rem 0rem .625rem .9375rem;
+            }
+    
+            .container__foto {
+                display: flex;
+                align-items: center;
+
+                .opciones__mascota{
+                    margin-left: .9375rem;
+                    a{
+                        padding: .3125rem;
+                        border-radius: .3125rem;
+                        margin-right: .3125rem;
+    
+                    }
+    
+                    a:hover{
+                        background-color: #4A3AFF;
+                        color: #FFFFFF;
+                    }
+                }
+            }
+        }
+    
+        /*estilos contenedr principal de la sidebar*/
+        .aside__mascota{
+            width: auto;
+            height: 70%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;   
+    
+            /*estilos items de la barra*/
+            .nav__a{  
+                padding:  .625rem;
+                margin: .625rem 0 ;
+                border-radius: .625rem;
+                display: flex;
+                color: var(--Secondary-1);
+                width: 100%;
+                text-decoration: none;
+                align-items: center;
+                cursor: pointer;
+                
+                .nav__h3{
+                    font-size: 1rem;
+                    margin: 0rem .625rem;
+                    font-weight: var(--fuente-400);
+                }
+            }
+    
+            a:hover{
+                background-color:var(--primary-color);
+                color: var(--blanco);
+            }
+
+            .selected {
+                background-color: var(--primary-color);
+                color: var(--blanco);
+            }
+            
+        }
+    }
+}
+
+

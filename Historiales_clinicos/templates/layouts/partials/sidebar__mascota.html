@@ -1,0 +1,48 @@
+{% load static %}
+
+<div class="container__sidebar">
+    <aside class="aside__mascota">
+        <!-- Contenido del encabezado -->
+        <header class="aside__header">
+            <div class="container__foto">
+                <img class="perfil__img" src="{%  static 'assets/foto_perro.jpg' %}" alt="fotoPerro">
+                <div class="opciones__mascota">
+                    <a href="#"><i class="fa-regular fa-pen-to-square"></i></a>
+                    <a href="/Perfil_propietario/{{mascota.propietario.documento}}"><i class="fa-regular fa-user"></i></a>
+                </div>
+            </div>
+        </header>
+        <nav class="aside__mascota">
+            <!-- Contenido del menú de navegación -->
+            <a  class="nav__a boton {% if current_page2 == 'vista__mascota' %}selected{% endif %}" href="/vista__mascota/{{ mascota.idMascota }}/" >
+                <i class="fa-solid fa-paw"></i>  
+                <h3 class="nav__h3">Datos mascota</h3>
+            </a>
+            <a  class="nav__a boton {% if current_page2 == '' %}selected{% endif %} " href="">
+                <i class="fa-solid fa-file-waveform"></i>
+                <h3 class="nav__h3">Historial Medico</h3>
+            </a> 
+            <a  class="nav__a boton {% if current_page2 == 'listar_consulta' %}selected{% endif %} " href="/listar_consulta/{{ mascota.idMascota }}/">
+                <i class="fa-solid fa-stethoscope"></i>
+                <h3 class="nav__h3">Consulta</h3>
+            </a>
+           {% comment %}  <a  class="nav__a boton" href="">
+                <i class="fas fa-band-aid"></i>
+                <h3 class="nav__h3" >Tratamiento</h3>
+            </a> {% endcomment %}
+            <a  class="nav__a boton {% if current_page2 == 'listar_vacunas' %}selected{% endif %}" href="/listar_vacunas/{{ mascota.idMascota }}/">
+                <i class="fa-solid fa-syringe"></i>
+                <h3 class="nav__h3" >Vacunas</h3>
+            </a>
+            <a  class="nav__a boton" href="">
+                <i class="fa-solid fa-prescription-bottle-medical"></i>
+                <h3 class="nav__h3">Desparacitante</h3> 
+            </a>
+            <a  class="nav__a boton" href="">
+                <i class="fa-solid fa-folder-plus"></i>
+                <h3 class="nav__h3">Imagenes y Examenes</h3> 
+            </a>
+        </nav>
+    </aside>
+</div>
+

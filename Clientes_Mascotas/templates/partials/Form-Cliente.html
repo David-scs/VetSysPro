@@ -1,0 +1,66 @@
+<div class="window-background" id="window-background">
+    <div class="window-container" id="window-container">
+        <main class="main_propietario">
+                
+            <form id="formularioPropietario" class="main__form" action="/registrar_propietario/" method="post">
+                {% csrf_token %}
+                <div class="titulo">
+                    <p>Datos Propietario</p>
+                    <hr class="separador">
+                </div>
+                
+                <div class="main__div">
+                    <label class="div__label" for="documentoPro">Documento</label>
+                    <input class="div__input" type="number" id="documentoPro" name="txtDocumentoP">
+                </div>
+
+                <div class="main__div">
+                    <label class="div__label" for="nombrePropietario">Nombres</label>
+                    <input class="div__input" type="text" id="nombrePropietario" name="txtNombreP">
+                </div>
+                
+                <div class="main__div">
+                    <label class="div__label" for="apellidoMascota">Apellidos</label>
+                    <input class="div__input" type="text" id="apellidoMascota" name="txtApellidosP">
+                </div>
+        
+                <div class="main__div completo">
+                    <label class="div__label" for="direccionPropietario">Direccion</label>
+                    <input class="div__input dir" type="text" id="direccionPropietario"name="txtDireccionP">
+                </div>
+        
+                <div class="main__div pro">
+                    <label class="div__label " for="emailPropietario">Email</label>
+                    <input class="div__input" type="email" id="emailPropietario" name="txtEmailP">
+                </div>
+        
+                <div class="main__div pro">
+                    <label class="div__label" for="numeroPropietario">Celular</label>
+                    <input class="div__input" type="num" id="numeroPropietario" name="txtTelP">
+                </div>
+                <br><br><br>
+
+                <div class="separador__container">
+                    <p>Datos de Emergencia</p>
+                    <hr class="separador">
+                </div>
+        
+                <div class="main__div res">
+                    <label class="div__label " for="nomRespaldoPro">Nombre</label>
+                    <input class="div__input " type="text" id="nomRespaldoPro" name="txtNombreE">
+                </div>
+        
+                <div class="main__div res">
+                    <label class="div__label" for="numRespaldoPro">Celular</label>
+                    <input class="div__input " type="number" id="numRespaldoPro" name="txtTelE">
+                </div>
+                
+        
+                <div class="main__div-btn">
+                    <a class="div__btn" id="close-button" href="{% url "consultorio" %}">Cancelar</a>
+                    <input class="div__btn" type="submit" value="Guardar">
+                </div>
+            </form>
+        </main>
+    </div>
+</div>
