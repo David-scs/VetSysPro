@@ -5,13 +5,29 @@
         <!-- Contenido del encabezado -->
         <header class="aside__header">
             <div class="container__foto">
-                <img class="perfil__img" src="{%  static 'assets/foto_perro.jpg' %}" alt="fotoPerro">
-                <div class="opciones__mascota">
-                    <a href="#"><i class="fa-regular fa-pen-to-square"></i></a>
-                    <a href="/Perfil_propietario/{{mascota.propietario.documento}}"><i class="fa-regular fa-user"></i></a>
-                </div>
+                <!-- Muestra la foto de la mascota si está disponible -->
+                {% if mascota.foto %}
+                <img class="perfil__img" src="{{ mascota.foto.url }}" alt="{{ mascota.nombre }}">
+                {% else %}
+                <!-- Si no hay foto, muestra una imagen predeterminada o un texto alternativo -->
+                <img class="perfil__img" src="{% static 'assets/logo2.svg' %}" alt="Foto de mascota predeterminada">
+                {% endif %}
+                <form action="{% url 'guardar_archivo_mascota' %}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <input type="hidden" name="mascota_id" value="{{ mascota.idMascota }}">
+                    <input type="file" name="archivo" accept="image/*">
+                    <button type="submit">Cargar Foto</button>
+                </form>
+            </div>
+            <div class="opciones__mascota">
+                <!-- Agrega el enlace de editar -->
+                <a href="#"><i class="fa-regular fa-pen-to-square"></i></a>
+                <!-- Enlace al perfil del propietario -->
+                <a href="/Perfil_propietario/{{ mascota.propietario.documento }}"><i class="fa-regular fa-user"></i></a>
             </div>
         </header>
+        
+        
         <nav class="aside__mascota">
             <!-- Contenido del menú de navegación -->
             <a  class="nav__a boton {% if current_page2 == 'vista__mascota' %}selected{% endif %}" href="/vista__mascota/{{ mascota.idMascota }}/" >

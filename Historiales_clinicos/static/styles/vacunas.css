@@ -22,12 +22,13 @@ input[type="number"]::-webkit-outer-spin-button {
     background-color: rgb(255, 255, 255);
 
     .container{    
-        max-height: 90%;
+        height: 90% !important;	
         max-width: 98%;
         background-color: var(--neutral--300);
         border-radius: 1rem;
         display: grid;
         grid-template-columns: 21% 79%;
+       
 
         /*Estilos contenedor principal (contiene la información cambiante)*/
         .container__principal{

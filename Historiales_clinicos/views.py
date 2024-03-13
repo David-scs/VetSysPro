@@ -66,7 +66,7 @@ def listar_vacunas(request, idMascota):
     current_page2 = "listar_vacunas"
     return render(request, 'listar_vacunas.html', {'vacuna': vacuna,'mascota': mascota, 'current_page': current_page, 'current_page2': current_page2})
 
-@transaction.atomic
+
 def registrar_vacuna(request):
     fecha = request.POST.get('fecha')
     nombre = request.POST.get('nombre')
@@ -76,3 +76,15 @@ def registrar_vacuna(request):
     mascota = Mascota.objects.get(idMascota=idMascota)
     vacuna = Vacuna.objects.create(fecha=fecha, nombre=nombre, dosis=dosis, mascota=mascota)
     return redirect('/listar_vacunas/{}/'.format(idMascota))
+
+
+def guardar_archivo_mascota(request):
+    if request.method == 'POST' and request.FILES['archivo']:
+        archivo = request.FILES['archivo']
+        mascota_id = request.POST.get('mascota_id')  # Obtén el ID de la mascota desde el formulario
+        mascota = Mascota.objects.get(idMascota=mascota_id)
+        mascota.foto = archivo
+        mascota.save() 
+        current_page = "consultorio" 
+        current_page2 = "vista__mascota"
+        return render(request, 'perfil_mascota.html', {'mascota': mascota, 'current_page': current_page, 'current_page2': current_page2})
