@@ -18,10 +18,10 @@
                 <i class="fa-solid fa-paw"></i>  
                 <h3 class="nav__h3">Datos mascota</h3>
             </a>
-            <a  class="nav__a boton {% if current_page2 == '' %}selected{% endif %} " href="">
+           {% comment %}  <a  class="nav__a boton {% if current_page2 == '' %}selected{% endif %} " href="">
                 <i class="fa-solid fa-file-waveform"></i>
                 <h3 class="nav__h3">Historial Medico</h3>
-            </a> 
+            </a>  {% endcomment %}
             <a  class="nav__a boton {% if current_page2 == 'listar_consulta' %}selected{% endif %} " href="/listar_consulta/{{ mascota.idMascota }}/">
                 <i class="fa-solid fa-stethoscope"></i>
                 <h3 class="nav__h3">Consulta</h3>
@@ -34,14 +34,14 @@
                 <i class="fa-solid fa-syringe"></i>
                 <h3 class="nav__h3" >Vacunas</h3>
             </a>
-            <a  class="nav__a boton" href="">
+           <a  class="nav__a boton" href="">
                 <i class="fa-solid fa-prescription-bottle-medical"></i>
                 <h3 class="nav__h3">Desparacitante</h3> 
             </a>
             <a  class="nav__a boton" href="">
                 <i class="fa-solid fa-folder-plus"></i>
                 <h3 class="nav__h3">Imagenes y Examenes</h3> 
-            </a>
+            </a> 
         </nav>
     </aside>
 </div>

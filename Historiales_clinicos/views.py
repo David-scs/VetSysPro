@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect
 from Clientes_Mascotas.models import Mascota
-from .models import Consulta
+from .models import Consulta, Vacuna
 from django.contrib.auth.decorators import login_required
 from datetime import date
+from django.db import transaction
 
 # Create your views here.
 @login_required
@@ -47,7 +48,7 @@ def registrar_consulta(request):
 
 def detalles_consulta(request, idConsulta):
     consulta = Consulta.objects.get(id=idConsulta)
-    mascota = consulta.mascota  # Suponiendo que hay una relación entre Consulta y Mascota
+    mascota = consulta.mascota  
     current_page = "consultorio" 
     current_page2 = "listar_consulta"
     return render(request, 'detalles_consulta.html', {'consulta': consulta, 'mascota': mascota, 'current_page': current_page, 'current_page2': current_page2})
@@ -60,6 +61,18 @@ def Mostrar_historial(request, idMascota):
 
 def listar_vacunas(request, idMascota):
     mascota = Mascota.objects.get(idMascota=idMascota)
+    vacuna = Vacuna.objects.filter(mascota=mascota)
     current_page = "consultorio" 
     current_page2 = "listar_vacunas"
-    return render(request, 'listar_vacunas.html', {'mascota': mascota, 'current_page': current_page, 'current_page2': current_page2})
+    return render(request, 'listar_vacunas.html', {'vacuna': vacuna,'mascota': mascota, 'current_page': current_page, 'current_page2': current_page2})
+
+@transaction.atomic
+def registrar_vacuna(request):
+    fecha = request.POST.get('fecha')
+    nombre = request.POST.get('nombre')
+    dosis = request.POST.get('dosis')
+    idMascota = request.POST.get('idMascota')
+    
+    mascota = Mascota.objects.get(idMascota=idMascota)
+    vacuna = Vacuna.objects.create(fecha=fecha, nombre=nombre, dosis=dosis, mascota=mascota)
+    return redirect('/listar_vacunas/{}/'.format(idMascota))

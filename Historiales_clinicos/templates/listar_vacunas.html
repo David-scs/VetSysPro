@@ -33,146 +33,74 @@
                 <div class="window-background" id="window-background">
                     <div class="window-container" id="window-container">
                         <main class="main__vacunas">
-                            <form id="formularioVacunas" class="main__form" action="#">
-                                <div class="main__div fila1Co1">
+                            <form id="formularioVacunas" class="main__form" action="/registrar_vacuna/" method='post'>
+                                {% csrf_token %}
+                                <div class="main__div fila1Co2">
                                     <label class="div__label" for="fechaVacuna">Fecha aplicación</label>
-                                    <input class="div__input" type="date" id="fechaVacuna">
+                                    <input class="div__input" type="date" id="fechaVacuna" name="fecha" pattern="\d{4}-\d{2}-\d{2}" required>
                                 </div>
                                 
-                                <div class="main__div fila1Co2">
-                                    <label class="div__label" for="nombreVacuna">Nombre Vacuna</label>
-                                    <input class="div__input" type="text" id="nombreVacuna">
-                                </div>          
-                                <div class="main__div fila1Co1">
-                                    <label class="div__label" for="nombreVacuna">Dosis</label>
-                                    <input class="div__input" type="text" id="nombreVacuna">
-                                </div>   
                                 <div class="main__div fila2Co1">
                                     <label class="div__label" for="idMascota">Mascota</label>
                                     <select class="div__input" name="idMascota" id="idMascota">
-                                        <option value="fabio">Fabio</option>
+                                        <option value="{{ mascota.idMascota }}">{{ mascota.nombre }}</option>
                                     </select>
                                 </div>
+                                <div class="main__div fila1Co1">
+                                    <label class="div__label" for="nombreVacuna">Nombre Vacuna</label>
+                                    <input class="div__input" type="text" id="nombreVacuna" name="nombre" >
+                                </div>          
+                                <div class="main__div fila1Co1">
+                                    <label class="div__label" for="nombreVacuna">Dosis</label>
+                                    <input class="div__input" type="text" id="nombreVacuna" name="dosis">
+                                </div>   
                                 
-            
-                                <div class="main__div textarea">
-                                    <label class="div__label" for="recomendacionesVacuna">Recomendaciones</label>
-                                    <textarea  class="div__textarea" name="recomendacionesVacuna" id="recomendacionesVacuna   " cols="30" rows="10"></textarea>
-                                </div>
-                                
-                    
                                 <div class="main__div-btn">
                                     <button class="div__btn" id="close-button" >Cancelar</button>
                                     <button class="div__btn" type="submit" onclick="return confirmarEnvio()">Guardar</button>
+                                    <a href="">guardar</a>
                                 </div>
-                    
                             </form>
                         </main>
                     </div>
                 </div>
             
                 {% comment "" %} -------------- ventana de confirmacion -------------------{% endcomment %}
-                <div id="modal" class="modal">
+               {% comment %}  <div id="modal" class="modal">
                     <div class="modal-content">
                       <p>¿Estás seguro de que quieres enviar el formulario?</p>
                       <br>
                       <button class="div__btn confirmar" onclick="enviarFormulario()">Sí, enviar</button>
                       <button class="div__btn confirmar" onclick="cerrarModal()">Cancelar</button>
                     </div>
-                </div>
+                </div> {% endcomment %}
 
                 {% comment "" %} -------------- Codigo tabla -------------------{% endcomment %}
                 <div class="containerMayor">
                     <div class="containerLine">
+
+                        {% for v in vacuna %}
                         <div class="box">
-                            <h3>Nombre vacuna</h3>
                             <table>
                                 <tbody>
                                     <tr>
-                                        <th>Fecha Aplicacion</th>
-                                        <td>08/03/2024</td>
+                                        <th><h3>Vacuna:</h3> </th>
+                                        <td>{{ v.nombre }}</td>
                                     </tr>
                                     <tr>
-                                        <th>Recomendaciones</th>
-                                        <td>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestias ab atque esse nesciunt neque eius! Ipsam ut a illo expedita, saepe et possimus magnam, ipsum neque, sit fugit exercitationem aliquid!</td>
-                                    </tr>
-                            </table>
-                        </div>                   
-    
-                        <div class="box">
-                            <h3>Nombre vacuna</h3>
-                            <table>
-                                <tbody>
-                                    <tr>
-                                        <th>Fecha Aplicacion</th>
-                                        <td>08/03/2024</td>
+                                        <th>Fecha Aplicacion: </th>
+                                        <td>{{ v.fecha|date:"d-m-y" }}</td>
                                     </tr>
                                     <tr>
-                                        <th>Recomendaciones</th>
-                                        <td>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestias ab atque esse nesciunt neque eius! Ipsam ut a illo expedita, saepe et possimus magnam, ipsum neque, sit fugit exercitationem aliquid!</td>
+                                        <th>Dosis</th>
+                                        <td>{{ v.dosis }}</td>
                                     </tr>
-                            </table>
-                        </div>
-    
-                        <div class="box">
-                            <h3>Nombre vacuna</h3>
-                            <table>
-                                <tbody>
-                                    <tr>
-                                        <th>Fecha Aplicacion</th>
-                                        <td>08/03/2024</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Recomendaciones</th>
-                                        <td>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestias ab atque esse nesciunt neque eius! Ipsam ut a illo expedita, saepe et possimus magnam, ipsum neque, sit fugit exercitationem aliquid!</td>
-                                    </tr>
-                            </table>
-                        </div>
-    
-                        <div class="box">
-                            <h3>Nombre vacuna</h3>
-                            <table>
-                                <tbody>
-                                    <tr>
-                                        <th>Fecha Aplicacion</th>
-                                        <td>08/03/2024</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Recomendaciones</th>
-                                        <td>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestias ab atque esse nesciunt neque eius! Ipsam ut a illo expedita, saepe et possimus magnam, ipsum neque, sit fugit exercitationem aliquid!</td>
-                                    </tr>
-                            </table>
-                        </div>
-    
-                        <div class="box">
-                            <h3>Nombre vacuna</h3>
-                            <table>
-                                <tbody>
-                                    <tr>
-                                        <th>Fecha Aplicacion</th>
-                                        <td>08/03/2024</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Recomendaciones</th>
-                                        <td>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestias ab atque esse nesciunt neque eius! Ipsam ut a illo expedita, saepe et possimus magnam, ipsum neque, sit fugit exercitationem aliquid!</td>
-                                    </tr>
-                            </table>
-                        </div>
-                        <div class="box">
-                            <h3>Nombre vacuna</h3>
-                            <table>
-                                <tbody>
-                                    <tr>
-                                        <th>Fecha Aplicacion</th>
-                                        <td>08/03/2024</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Recomendaciones</th>
-                                        <td>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestias ab atque esse nesciunt neque eius! Ipsam ut a illo expedita, saepe et possimus magnam, ipsum neque, sit fugit exercitationem aliquid!</td>
-                                    </tr>
-                            </table>
-                        </div>
-    
+                                    
+                                </tbody>
+                            </table>       
+                        </div>   
+                        {% endfor %}
+
                     </div>
                 </div>
 
