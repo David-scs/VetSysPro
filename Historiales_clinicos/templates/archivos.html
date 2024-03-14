@@ -29,6 +29,30 @@
                     <input type="file" id="file-input" style="display:none;">
                 </div>
 
+                <form method="post" enctype="multipart/form-data" action="/cargar_archivo/">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="id_nombre">Nombre:</label>
+                        <input type="text" class="form-control" id="id_nombre" name="nombre">
+                    </div>
+                    <div class="form-group">
+                        <label for="id_archivo">Archivo:</label>
+                        <input type="file" class="form-control-file" id="id_archivo" name="archivo">
+                    </div>
+                    <div class="form-group">
+                        <label for="id_fecha">Fecha:</label>
+                        <input type="date" class="form-control" id="id_fecha" name="fecha">
+                    </div>
+                    <div class="form-group">
+                        <label for="id_mascota">Mascota:</label>
+                        <select class="div__input" name="mascota" id="idMascota">
+                            <option value="{{ mascota.idMascota }}">{{ mascota.nombre }}</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </form>
+                
+
                 <div class="ful-img" id="fulImgBox">
                     <img src="{% static 'assets/img1.jfif' %}" id="fulIimg" alt="img_galeria">
                     <span onclick="closeImg()">x</span>
@@ -36,21 +60,12 @@
 
                 {% comment "" %} -------------- Imagenes de la galeria -------------------{% endcomment %}
                 <div class="img__galeria">                   
-                    <img src="{%  static 'assets/img1.jfif' %}" onclick="openImg(this.src)" alt="img_galeria">
-                    <img src="{%  static 'assets/img2.jfif' %}" onclick="openImg(this.src)" alt="img_galeria">
-                    <img src="{%  static 'assets/img3.jfif' %}" onclick="openImg(this.src)" alt="img_galeria">
-                    <img src="{%  static 'assets/img4.jfif' %}" onclick="openImg(this.src)" alt="img_galeria">
-                    <img src="{%  static 'assets/img5.jfif' %}" onclick="openImg(this.src)" alt="img_galeria">
-                    <img src="{%  static 'assets/img6.jfif' %}" onclick="openImg(this.src)" alt="img_galeria">
-                    <img src="{%  static 'assets/img7.jfif' %}" onclick="openImg(this.src)" alt="img_galeria">
-                    <img src="{%  static 'assets/img8.jfif' %}" onclick="openImg(this.src)" alt="img_galeria">
-                    <img src="{%  static 'assets/img8.jfif' %}" onclick="openImg(this.src)" alt="img_galeria">
-                    <img src="{%  static 'assets/img8.jfif' %}" onclick="openImg(this.src)" alt="img_galeria">
-                    <img src="{%  static 'assets/img8.jfif' %}" onclick="openImg(this.src)" alt="img_galeria">
-                    <img src="{%  static 'assets/img8.jfif' %}" onclick="openImg(this.src)" alt="img_galeria">
-                    <img src="{%  static 'assets/img8.jfif' %}" onclick="openImg(this.src)" alt="img_galeria">
-                    <img src="{%  static 'assets/img8.jfif' %}" onclick="openImg(this.src)" alt="img_galeria">
-                    <img src="{%  static 'assets/img8.jfif' %}" onclick="openImg(this.src)" alt="img_galeria">
+                    {% for archivo in archivos %}
+                    <div>
+                        <spam>nombre: {{ archivo.nombre }}</spam><br>
+                        <img src="{{ archivo.archivo.url }}" onclick="openImg(this.src)" alt="{{ archivo.nombre }}">
+                    </div>
+                    {% endfor %}
                 </div>
 
             </div>

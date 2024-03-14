@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from Clientes_Mascotas.models import Mascota
-from .models import Consulta, Vacuna, desparasitantes
+from .models import Consulta, Vacuna, desparasitantes, ArchivoMascota
 from django.contrib.auth.decorators import login_required
 from datetime import date
 from django.db import transaction
@@ -105,3 +105,35 @@ def registrar_desparasitante(request):
     mascota = Mascota.objects.get(idMascota=idMascota)
     desparasitante = desparasitantes.objects.create(fecha=fecha, nombre=nombre, dosis=dosis, mascota=mascota)
     return redirect('/listar_desparasitantes/{}/'.format(idMascota))
+
+def listar_archivos(request, idMascota):
+    mascota = Mascota.objects.get(idMascota=idMascota)
+    current_page = "consultorio" 
+    current_page2 = "listar_archivos"
+    archivos = ArchivoMascota.objects.filter(mascota=mascota)
+    return render(request, 'archivos.html', {'mascota': mascota, 'current_page': current_page, 'current_page2': current_page2, 'archivos': archivos})
+
+
+def cargar_archivo(request):
+    if request.method == 'POST':
+        nombre = request.POST.get('nombre')
+        archivo = request.FILES.get('archivo')
+        fecha = request.POST.get('fecha')
+        mascota_id = request.POST.get('mascota')
+        
+        # Obtener la mascota relacionada
+        mascota = Mascota.objects.get(idMascota=mascota_id)
+        
+        # Crear el objeto ArchivoMascota y guardarlo en la base de datos
+        archivo_mascota = ArchivoMascota.objects.create(
+            nombre=nombre,
+            archivo=archivo,
+            fecha=fecha,
+            mascota=mascota
+        )
+
+        # Redirigir a la página de listado de archivos de la mascota
+        return redirect('/listar_archivos/{}/'.format(mascota_id))
+
+    # Si no es una solicitud POST, renderiza el formulario vacío
+    return render(request, 'formulario_cargar_archivo.html', {'mascotas': mascota})

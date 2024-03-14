@@ -54,9 +54,9 @@
                 <i class="fa-solid fa-prescription-bottle-medical"></i>
                 <h3 class="nav__h3">Desparacitante</h3> 
             </a>
-            <a  class="nav__a boton" href="">
+            <a  class="nav__a boton {% if current_page2 == 'listar_archivos' %}selected{% endif %}" href="/listar_archivos/{{ mascota.idMascota }}/">
                 <i class="fa-solid fa-folder-plus"></i>
-                <h3 class="nav__h3">Imagenes y Examenes</h3> 
+                <h3 class="nav__h3">archivos</h3> 
             </a> 
         </nav>
     </aside>

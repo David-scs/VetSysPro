@@ -51,3 +51,12 @@ class desparasitantes(models.Model):
 
     def __str__(self):
         return f"Desparasitante de {self.mascota.nombre}"
+    
+class ArchivoMascota(models.Model):
+    fecha = models.DateField(default=date.today)
+    nombre = models.CharField(max_length=100)
+    archivo = models.FileField(upload_to='archivos_mascotas')
+    mascota = models.ForeignKey(Mascota, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"Archivo de {self.mascota.nombre}"
