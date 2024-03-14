@@ -50,7 +50,7 @@
                 <i class="fa-solid fa-syringe"></i>
                 <h3 class="nav__h3" >Vacunas</h3>
             </a>
-           <a  class="nav__a boton" href="">
+           <a  class="nav__a boton"  {% if current_page2 == 'listar_desparacitantes' %}selected{% endif %} href="/listar_desparasitantes/{{ mascota.idMascota }}/">
                 <i class="fa-solid fa-prescription-bottle-medical"></i>
                 <h3 class="nav__h3">Desparacitante</h3> 
             </a>

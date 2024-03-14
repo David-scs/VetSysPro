@@ -1,0 +1,115 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+
+{% block title %}Historial Clinico{% endblock %}
+
+{% comment "" %} -------------- styles -------------------{% endcomment %}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'styles/sidebar.css' %}">
+<link rel="stylesheet" href="{% static 'styles/sidebar_Mascota.css' %}">
+<link rel="stylesheet" href="{% static 'styles/desparasitante.css' %}">
+{% endblock styles %}
+
+{% comment "" %} -------------- content -------------------{% endcomment %}
+{% block content %}
+    {% comment "" %} -------------- sidebar principal -------------------{% endcomment %}
+    {% include "layouts/partials/sidebar.html" %}
+
+    <main class="main">
+        <div class="container">
+            {% comment "" %} -------------- sidebar Mascota -------------------{% endcomment %}
+            {% include "layouts/partials/sidebar__mascota.html" %}
+
+            {% comment "" %} -------------- Contenedor principal desparasitante -------------------{% endcomment %}
+            <div class="container__principal">
+                {% comment "" %} -------------- Codigo formulario -------------------{% endcomment %}
+                <div class="div__head">
+                    <h1>Desparacitante</h1>
+                    <button class="div__btn" id="open-button">Registrar desparacitante</button>
+                </div>
+
+                <div class="window-background" id="window-background">
+                    <div class="window-container" id="window-container">
+                        <main class="main__desparacitante">
+                            <form id="formularioDesparacitante" class="main__form" action="/registrar_desparasitante/" method='post'>
+                                {% csrf_token %}
+                                <div class="main__div ">
+                                    <label class="div__label" for="fechaDesparacitante">Fecha</label>
+                                    <input class="div__input" type="date" id="fechaDesparacitante" name="fecha">
+                                </div>
+
+                                <div class="main__div ">
+                                    <label class="div__label" for="idMascota">Mascota</label>
+                                    <select class="div__input" name="idMascota" id="idMascota">
+                                        <option value="{{ mascota.idMascota }}">{{ mascota.nombre }}</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="main__div ">
+                                    <label class="div__label" for="nombreDesparacitante">Nombre</label>
+                                    <input class="div__input" type="text" id="nombreDesparacitante" name="nombre">
+                                </div>   
+                                
+                                <div class="main__div fila1Co1">
+                                    <label class="div__label" for="nombreVacuna">Dosis</label>
+                                    <input class="div__input" type="text" id="nombreVacuna" name="dosis">
+                                </div> 
+                                
+                    
+                                <div class="main__div-btn">
+                                    <button class="div__btn" id="close-button" >Cancelar</button>
+                                    <button class="div__btn" type="submit" onclick="return confirmarEnvio()">Guardar</button>
+                                </div>
+                    
+                            </form>
+                        </main>
+                    </div>
+                </div>
+                
+            
+                {% comment "" %} -------------- ventana de confirmacion -------------------{% endcomment %}
+              {% comment %}   <div id="modal" class="modal">
+                    <div class="modal-content">
+                      <p>¿Estás seguro de que quieres enviar el formulario?</p>
+                      <button class="div__btn confirmar" onclick="confirmarEnvio()">Sí, enviar</button>
+                      <button class="div__btn confirmar" onclick="cerrarModal()">Cancelar</button>
+                    </div>
+                </div>
+ {% endcomment %}
+            {% comment "" %} -------------- Codigo tabla -------------------{% endcomment %}
+            <div class="containerMayor">
+                <div class="containerLine">
+                    {% for d in desparasitantes %}
+                    <div class="box">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <th><h3>Vacuna:</h3> </th>
+                                    <td>{{ d.nombre }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Fecha Aplicacion: </th>
+                                    <td>{{ d.fecha|date:"d-m-y" }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Dosis</th>
+                                    <td>{{ d.dosis }}</td>
+                                </tr>
+                                
+                            </tbody>
+                        </table>       
+                    </div>   
+                    {% endfor %}
+                   
+                    
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}
+
+{% comment "" %} -------------- script -------------------{% endcomment %}
+{% block scripts %}
+<script src="{% static 'js/desparasitante.js' %}"></script>
+<script src="{% static 'js/sidebar_Mascota.js' %}"></script>
+{% endblock scripts %}

@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from Clientes_Mascotas.models import Mascota
-from .models import Consulta, Vacuna
+from .models import Consulta, Vacuna, desparasitantes
 from django.contrib.auth.decorators import login_required
 from datetime import date
 from django.db import transaction
@@ -88,3 +88,20 @@ def guardar_archivo_mascota(request):
         current_page = "consultorio" 
         current_page2 = "vista__mascota"
         return render(request, 'perfil_mascota.html', {'mascota': mascota, 'current_page': current_page, 'current_page2': current_page2})
+
+def listar_desparacitantes(request, idMascota):
+    mascota = Mascota.objects.get(idMascota=idMascota)
+    desparasitante = desparasitantes.objects.filter(mascota=mascota)
+    current_page = "consultorio" 
+    current_page2 = "listar_desparacitantes"
+    return render(request, 'listar_desparasitantes.html', {'mascota': mascota, 'current_page': current_page, 'current_page2': current_page2, 'desparasitantes': desparasitante})
+
+def registrar_desparasitante(request):
+    fecha = request.POST.get('fecha')
+    nombre = request.POST.get('nombre')
+    dosis = request.POST.get('dosis')
+    idMascota = request.POST.get('idMascota')
+    
+    mascota = Mascota.objects.get(idMascota=idMascota)
+    desparasitante = desparasitantes.objects.create(fecha=fecha, nombre=nombre, dosis=dosis, mascota=mascota)
+    return redirect('/listar_desparasitantes/{}/'.format(idMascota))

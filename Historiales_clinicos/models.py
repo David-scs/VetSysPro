@@ -41,3 +41,13 @@ class Vacuna(models.Model):
 
     def __str__(self):
         return f"Vacuna de {self.mascota.nombre}"
+    
+    
+class desparasitantes(models.Model):
+    fecha = models.DateField(default=date.today)
+    nombre = models.CharField(max_length=100)
+    dosis = models.PositiveSmallIntegerField()
+    mascota = models.ForeignKey(Mascota, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"Desparasitante de {self.mascota.nombre}"
